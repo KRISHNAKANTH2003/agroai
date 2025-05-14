@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["python311"]  # Specify Python version if needed
+
+[phases.build]
+commands = ["pip install -r requirements.txt"]
+
+[start]
+cmd = "gunicorn app:app --bind 0.0.0.0:$PORT"  # Adjust for your Flask app
