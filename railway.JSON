@@ -1,0 +1,20 @@
+{
+  "builds": [
+    {
+      "src": "app.py",
+      "use": "@railway/python",
+      "variables": {
+        "PYTHON_VERSION": "3.10"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "/"
+    }
+  ],
+  "deploy": {
+    "startCommand": "gunicorn app:app -b :$PORT"
+  }
+}
