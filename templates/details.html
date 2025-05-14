@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="font-family: Arial, sans-serif; background-image: url('static/images/factory.gif'); background-size: cover; background-repeat: no-repeat; background-position: center; padding: 6rem; display: flex; flex-direction: column; align-items: center; text-align: center;">
+
+    <!-- Semi-transparent overlay for readability -->
+    <div style="background: rgba(255, 255, 255, 1.5rem); padding: 2rem; border-radius: 12px; max-width: 900px; width: 100%;">
+  
+        <!-- Title and Logo -->
+        <div style="margin-bottom: 3rem;">
+            <img src="static/images/farmerlogo.png" alt="Logo" style="height: 80px;">
+            <h1 style="color: #2d3748; margin-top: 1rem; font-size: 2rem;">Meet Our Team</h1>
+        </div>
+
+        <!-- Cards Container -->
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px;">
+
+            <!-- Team Member Card -->
+            {% for member in [
+                {"name": "Krishna Kanth", "role": "AI Model Developer", "email": "krishna.ai@sriramec.edu.in", "image": "static/images/kk.jpg", "github": "https://github.com/KRISHNAKANTH2003/crop_recommendation.git", "skills": ["Built & trained ML models", "Data preprocessing & evaluation", "AI-backend integration", "Model optimization & tuning"]},
+                {"name": "Surya", "role": "Frontend Developer", "email": "suryasrinivasan36@gmail.com", "image": "static/images/surya.jpg", "github": "https://github.com/KRISHNAKANTH2003/crop_recommendation.git", "skills": ["Designed UI pages", "Built responsive layouts", "Connected frontend to backend","API Call Integration"]}
+            ] %}
+            <div style="background:rgba(255, 255, 255, 0.5); backdrop-filter: blur(6px); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 1.5rem; width: 100%; max-width: 400px; text-align: center; transition: transform 0.3s;">
+                <img src="{{ member.image }}" alt="{{ member.name }}" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 1rem;">
+                <h2 style="margin: 0; color: #2d3748;">{{ member.name }}</h2>
+                <p style="color: black; font-weight: bold; margin: 0.5rem 0;">{{ member.role }}</p>
+                <p style="margin: 0.5rem 0;"><a href="mailto:{{ member.email }}" style="color: #2b6cb0; text-decoration: none;">{{ member.email }}</a></p>
+                <a href="{{ member.github }}" target="_blank" style="text-decoration: none; font-size: 1.2rem;">🐙 GitHub Profile</a>
+                <ul style="padding-left: 0; list-style: none; margin-top: 1rem; text-align: left;">
+                    {% for skill in member.skills %}
+                    <li style="color: #4a5568;">✔ {{ skill }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌱 AGRO AI</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <div class="head">
+        <img src="{{ url_for('static', filename='images/farmerlogo.png') }}" alt="Logo" class="logo"><br>
+        <h1 class="titles"> AGRO AI</h1>
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/recommend">Recommendation</a>
+            <a href="/about">Details</a>
+            <a href="/details">About Us</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>© Final Year Project - <strong>Crop Recommendation System</strong></p>
+        <p>Designed by Krishna Kanth & Team | <a href="/details">About Us</a></p>
+    </footer>
+</body>
+</html>

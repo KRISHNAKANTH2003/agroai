@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body>
+    <style>
+        body {
+             font-family: Arial, sans-serif;
+             margin: 0;
+             padding: 0;
+             background-image: url('/static/images/factoryy.gif'); /* Update the path */
+             background-size: cover;
+             background-position: center;
+             background-repeat: no-repeat;
+            /*font-family: Arial, sans-serif;
+            background-color: #f3f8f4;
+            margin: 0;
+            padding: 0;*/
+        }
+        .container {
+            /*max-width: 1800px;
+            margin: auto;
+            padding: 30px 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);*/
+            max-width: 500rem;
+            margin: 2rem auto;
+            padding: 4px 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2); 
+        }
+        h1 {
+            color: #2e7d32;
+            border-radius: 30px;
+        }
+        p {
+            line-height: 2.4;
+            color: black;
+        }
+        .highlight {   
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 15px;
+            border-left: 5px solid #66bb6a;
+            margin-top: 20px;
+        }
+    </style>
+    <div class="container">
+        <h1 style="background-color: #4caf50; color: white; padding: 1.8rem 1.5rem; display:block;">About Crop Recommendation Model</h1>
+        <p>
+            The Crop Recommendation Model is an AI-powered solution designed to assist farmers and agricultural planners 
+            in selecting the most suitable crop to grow based on environmental and soil parameters. 
+            Using Machine Learning algorithms, the model provides smart, data-driven suggestions to improve yield and sustainability.
+        </p>
+
+        <div class="highlight">
+            <strong>Soil Analysis</strong>
+            <ul>
+                <li>Soil Type Identification</li>
+                <li>NPK Nutrient Levels</li>
+                <li>Soil pH Value</li>
+                <li>Supports informed agricultural decision-making</li>
+            </ul>
+        </div>
+
+        <p>
+             This model uses features such as nitrogen (N), phosphorus (P), potassium (K), temperature, humidity, pH, and rainfall to predict the most appropriate crop for a given input.
+        </p>
+        <p> 
+             It is developed using Python and machine learning libraries such as Scikit-learn, and integrated into a web application for easy access.
+        </p>
+        <p>
+            Our goal is to empower farmers with intelligent tools that lead to higher productivity and sustainable agriculture.
+        </p>
+        <div class="highlight">
+            <strong>AI Model</strong>
+            <ul>
+                <li>Supervised Learning Algorithm</li>
+                <li>Feature-Based Crop Prediction</li>
+                <li>High Accuracy through Data Preprocessing</li>
+                <li>Real-time Recommendations</li>
+            </ul>
+        </div>
+        <p>In our AI-powered crop recommendation project, we developed a supervised machine learning model that analyzes soil parameters such as nitrogen, phosphorus, potassium, pH, and moisture content to accurately predict the most suitable crop for a given soil condition, ensuring data-driven and efficient agricultural practices.</p>
+        <div class="highlight">
+            <strong>Weather Consideration </strong>
+            <ul>
+                <li>Temperature Range</li>
+                <li>Rainfall Patterns</li>
+                <li>Humidity Levels</li>
+                <li>Sunlight Duration</li>
+            </ul>
+        </div>
+        <p>In our crop recommendation system, weather conditions play a crucial role in enhancing prediction accuracy. Key factors like temperature, rainfall, humidity, and sunlight duration are considered to match crops with optimal growing environments. By analyzing seasonal weather patterns, the system ensures that crops are not only soil-compatible but also climate-suitable. This leads to more sustainable farming practices and higher agricultural productivity.</p>       
+        <div style=" display: flex; justify-content: space-evenly;">
+            <a style="background-color: #4caf50; padding: 1.8rem 1.5rem; border-radius: 4px; display: inline-block; color: white;" href="/" class="button">Return Home</a>
+            <a style="background-color: #4caf50; padding: 1.8rem 1.5rem; border-radius: 4px; display: inline-block; color: white;"  href="/recommend" class="button">Recommend</a>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}
