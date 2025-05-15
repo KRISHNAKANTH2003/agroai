@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="recommendation-form" style="background-image: url('/static/images/grass.jpg'); background-size: cover; background-repeat: no-repeat; padding: 20px;">
+    <h2 class="rec">Crop Recommendation System</h2>
+
+    <div class="form-group">
+        <label for="district">Select Your District TamilNadu</label>
+        <select id="district" name="district" onchange="setDefaultValues()" required>
+        <option value="">Select a district</option>
+        <option value="Ariyalur">Ariyalur</option>
+        <option value="Chengalpattu">Chengalpattu</option>
+        <option value="Chennai">Chennai</option>
+        <option value="Coimbatore">Coimbatore</option>
+        <option value="Cuddalore">Cuddalore</option>
+        <option value="Dharmapuri">Dharmapuri</option>
+        <option value="Dindigul">Dindigul</option>
+        <option value="Erode">Erode</option>
+        <option value="Kallakurichi">Kallakurichi</option>
+        <option value="Kanchipuram">Kanchipuram</option>
+        <option value="Kanniyakumari">Kanniyakumari</option>
+        <option value="Karur">Karur</option>
+        <option value="Krishnagiri">Krishnagiri</option>
+        <option value="Madurai">Madurai</option>
+        <option value="Nagapattinam">Nagapattinam</option>
+        <option value="Namakkal">Namakkal</option>
+        <option value="Perambalur">Perambalur</option>
+        <option value="Pudukkottai">Pudukkottai</option>
+        <option value="Ramanathapuram">Ramanathapuram</option>
+        <option value="Ranipet">Ranipet</option>
+        <option value="Salem">Salem</option>
+        <option value="Sivaganga">Sivaganga</option>
+        <option value="Tenkasi">Tenkasi</option>
+        <option value="Thanjavur">Thanjavur</option>
+        <option value="Theni">Theni</option>
+        <option value="Thoothukudi">Thoothukudi</option>
+        <option value="Tiruchirappalli">Tiruchirappalli</option>
+        <option value="Tirunelveli">Tirunelveli</option>
+        <option value="Tirupathur">Tirupathur</option>
+        <option value="Tiruppur">Tiruppur</option>
+        <option value="Tiruvallur">Tiruvallur</option>
+        <option value="Tiruvannamalai">Tiruvannamalai</option>
+        <option value="Tiruvarur">Tiruvarur</option>
+        <option value="Vellore">Vellore</option>
+        <option value="Viluppuram">Viluppuram</option>
+        <option value="Virudhunagar">Virudhunagar</option>
+        </select>
+    </div>
+
+    <form action="/recommend" method="POST" id="recommendForm">
+        <div class="form-group">
+            <label for="nitrogen">Nitrogen (N) content in soil (kg/ha):</label>
+            <input type="number" step="0.1" id="nitrogen" name="nitrogen" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phosphorus">Phosphorus (P) content in soil (kg/ha):</label>
+            <input type="number" step="0.1" id="phosphorus" name="phosphorus" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="potassium">Potassium (K) content in soil (kg/ha):</label>
+            <input type="number" step="0.1" id="potassium" name="potassium" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="temperature">Temperature (°C):</label>
+            <input type="number" step="0.1" id="temperature" name="temperature" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="humidity">Relative Humidity (%):</label>
+            <input type="number" step="0.1" id="humidity" name="humidity" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="ph">Soil pH (0-14):</label>
+            <input type="number" step="0.1" id="ph" name="ph" min="0" max="14" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="rainfall">Rainfall (mm):</label>
+            <input type="number" step="0.1" id="rainfall" name="rainfall" required>
+        </div>
+        
+        <button type="submit" class="submit-button">Get Recommendation</button>
+    </form>
+</section>
+
+<script>
+function setDefaultValues() {
+    const district = document.getElementById("district").value;
+    const districtDefaults = {
+                    Ariyalur:       { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Chengalpattu:   { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Chennai:        { N: 22, P: 17,  K: 31,  temperature: 27, humidity: 94, ph: 6, rainfall: 176 },
+                    Coimbatore:     { N:118, P: 46,  K: 20,  temperature: 24, humidity: 80, ph: 7, rainfall:  80 },
+                    Cuddalore:      { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Dharmapuri:     { N: 20, P: 27,  K: 30,  temperature: 31, humidity: 50, ph: 6, rainfall:  95 },
+                    Dindigul:       { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Erode:          { N:118, P: 46,  K: 20,  temperature: 24, humidity: 80, ph: 7, rainfall:  80 },
+                    Kallakurichi:   { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Kanchipuram:    { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Kanniyakumari:  { N: 22, P: 17,  K: 31,  temperature: 27, humidity: 94, ph: 6, rainfall: 176 },
+                    Karur:          { N:100, P: 82,  K: 50,  temperature: 27, humidity: 80, ph: 6, rainfall: 105 },
+                    Krishnagiri:    { N: 20, P: 27,  K: 30,  temperature: 31, humidity: 50, ph: 6, rainfall:  95 },
+                    Madurai:        { N:  8, P:  8,  K: 13,  temperature: 27, humidity: 76, ph: 6, rainfall: 110 },
+                    Nagapattinam:   { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Namakkal:       { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Perambalur:     { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Pudukkottai:    { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Ramanathapuram: { N: 22, P: 17,  K: 31,  temperature: 27, humidity: 94, ph: 6, rainfall: 176 },
+                    Ranipet:        { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Salem:          { N: 20, P: 27,  K: 30,  temperature: 31, humidity: 50, ph: 6, rainfall:  95 },
+                    Sivaganga:      { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Tenkasi:        { N: 22, P: 17,  K: 31,  temperature: 27, humidity: 94, ph: 6, rainfall: 176 },
+                    Thanjavur:      { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Theni:          { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Thoothukudi:    { N: 22, P: 17,  K: 31,  temperature: 27, humidity: 94, ph: 6, rainfall: 176 },
+                    Tiruchirappalli:{ N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Tirunelveli:    { N: 22, P: 17,  K: 31,  temperature: 27, humidity: 94, ph: 6, rainfall: 176 },
+                    Tirupathur:     { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Tiruppur:       { N:118, P: 46,  K: 20,  temperature: 24, humidity: 80, ph: 7, rainfall:  80 },
+                    Tiruvallur:     { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Tiruvannamalai: { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Tiruvarur:      { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Vellore:        { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Viluppuram:     { N: 80, P: 48,  K: 40,  temperature: 24, humidity: 82, ph: 6, rainfall: 236 },
+                    Virudhunagar:   { N:118, P: 46,  K: 20,  temperature: 24, humidity: 80, ph: 7, rainfall:  80 }
+                    };
+
+    const data = districtDefaults[district] || {
+        N: Math.floor(Math.random() * 20) + 45,
+        P: Math.floor(Math.random() * 10) + 25,
+        K: Math.floor(Math.random() * 10) + 35,
+        temperature: Math.floor(Math.random() * 5) + 30,
+        humidity: Math.floor(Math.random() * 10) + 65,
+        ph: (Math.random() * 1.5 + 6).toFixed(1),
+        rainfall: Math.floor(Math.random() * 300) + 650
+    };
+
+    document.getElementById("nitrogen").value = data.N;
+    document.getElementById("phosphorus").value = data.P;
+    document.getElementById("potassium").value = data.K;
+    document.getElementById("temperature").value = data.temperature;
+    document.getElementById("humidity").value = data.humidity;
+    document.getElementById("ph").value = data.ph;
+    document.getElementById("rainfall").value = data.rainfall;
+}
+</script>
+<style>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('/static/images/grass.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+/* Form Container */
+.recommendation-form {
+    background: rgba(255, 255, 255, 0.6);  /* Darker for better contrast */
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    max-width: 600px;
+    margin: 4rem auto;
+    color: #fff;
+}
+
+/* Form Title */
+.recommendation-form .rec {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+/* Each Input Group */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+/* Labels */
+.form-group label {
+    display: block;
+    color: white;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Inputs and Dropdowns */
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #f9f9f9;
+    color: black;
+}
+
+/* Submit Button */
+.submit-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #3e8e41;
+}
+
+</style>
+{% endblock %}
